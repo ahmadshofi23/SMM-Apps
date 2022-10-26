@@ -9,3 +9,4 @@ Color kWhiteColor = const Color(0xffFFFFFF);
 Color kBackgroundColor = const Color(0xffF2F2F2);
 Color kFillCardColor = Color(0xffDEDEDE);
 Color kTextColor = Color(0xff5A5A5A);
+Color kFontColorPlaceHolder = const Color(0xff828282);
