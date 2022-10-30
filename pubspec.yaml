@@ -27,13 +27,23 @@ environment:
 # the latest version available on pub.dev. To see which dependencies have newer
 # versions available, run `flutter pub outdated`.
 dependencies:
+  bloc: ^7.2.1
   cupertino_icons: ^1.0.2
+  dartz: ^0.10.1
+  equatable: ^2.0.3
   flutter:
     sdk: flutter
+  flutter_bloc: ^7.1.0
+  flutter_modular: ^5.0.0
   google_fonts: ^3.0.1
+  persistent_bottom_nav_bar: ^5.0.2
+  copy_with_extension: ^4.0.0
+  
 
 dev_dependencies:
   flutter_lints: ^1.0.0
+  build_runner: ^2.1.7
+  copy_with_extension_gen: ^4.0.0
   flutter_test:
     sdk: flutter
 

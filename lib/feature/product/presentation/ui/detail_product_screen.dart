@@ -4,6 +4,7 @@ import 'package:flutter/services.dart';
 import 'package:smm_apps/core/utils/colros.dart';
 import 'package:smm_apps/core/widget/default_button.dart';
 import 'package:smm_apps/feature/forecast/presentation/ui/forecast_chart_screen.dart';
+import 'package:smm_apps/feature/product/domain/entity/product_entities.dart';
 
 class DetailProductScreen extends StatefulWidget {
   const DetailProductScreen({Key? key}) : super(key: key);
@@ -14,7 +15,14 @@ class DetailProductScreen extends StatefulWidget {
 
 class _DetailProductScreenState extends State<DetailProductScreen> {
   @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+  }
+
+  @override
   Widget build(BuildContext context) {
+    final args = ModalRoute.of(context)!.settings.arguments as Product;
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
@@ -47,7 +55,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                 ),
                 const SizedBox(height: 16),
                 Text(
-                  'SYRINGE 100UL CD1700',
+                  '${args.name}',
                   style: TextStyle(
                     fontSize: 18,
                     color: kBlackColor,

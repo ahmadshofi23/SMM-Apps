@@ -5,6 +5,7 @@ import 'package:smm_apps/core/utils/colros.dart';
 import 'package:smm_apps/core/utils/style.dart';
 import 'package:smm_apps/core/widget/default_button.dart';
 import 'package:smm_apps/feature/forecast/presentation/ui/card_forecast_chart.dart';
+import 'package:smm_apps/feature/forecast/presentation/ui/main_forecast_screen.dart';
 
 class ForecastChartScreen extends StatefulWidget {
   const ForecastChartScreen({Key? key}) : super(key: key);
@@ -118,7 +119,13 @@ class _ForecastChartScreenState extends State<ForecastChartScreen> {
                   ),
                 ),
                 const Spacer(),
-                DefaultButton(text: 'Ajukan Forecast', press: () {})
+                DefaultButton(
+                    text: 'Ajukan Forecast',
+                    press: () => Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => MainForecastScreen(),
+                        )))
               ],
             ),
           ),

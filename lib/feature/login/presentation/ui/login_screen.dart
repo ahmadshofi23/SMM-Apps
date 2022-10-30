@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smm_apps/core/utils/colros.dart';
+import 'package:smm_apps/core/utils/common.dart';
 import 'package:smm_apps/feature/product/presentation/ui/search_screen.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -12,6 +14,8 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  final _namedRoutes = Modular.get<NameRoutes>();
+
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -126,14 +130,11 @@ class _LoginScreenState extends State<LoginScreen> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            onPressed: () {
-                              Navigator.push(
+                            onPressed: () => Navigator.push(
                                 context,
                                 MaterialPageRoute(
-                                  builder: (context) => const SearchScreen(),
-                                ),
-                              );
-                            },
+                                    builder: (context) =>
+                                        const SearchScreen())),
                             child: Text(
                               "Login",
                               style: TextStyle(
