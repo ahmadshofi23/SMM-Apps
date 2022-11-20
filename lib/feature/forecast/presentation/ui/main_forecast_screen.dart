@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:smm_apps/core/utils/colros.dart';
 import 'package:smm_apps/core/utils/style.dart';
+import 'package:smm_apps/feature/forecast/presentation/ui/forecast_detail_screen.dart';
 
 class MainForecastScreen extends StatefulWidget {
   const MainForecastScreen({Key? key}) : super(key: key);
@@ -155,70 +156,78 @@ class _MainForecastScreenState extends State<MainForecastScreen> {
                 ),
               ),
               const SizedBox(height: 12),
-              Container(
-                height: 86,
-                width: double.infinity,
-                decoration: BoxDecoration(
-                  color: kWhiteColor,
-                  borderRadius: BorderRadius.circular(kDefaultRadius),
-                ),
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                    horizontal: 16,
-                    vertical: 12,
+              GestureDetector(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => ForecastDetailScreen()));
+                },
+                child: Container(
+                  height: 86,
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: kWhiteColor,
+                    borderRadius: BorderRadius.circular(kDefaultRadius),
                   ),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Row(
-                            children: [
-                              const Text(
-                                '#1128',
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  fontWeight: FontWeight.bold,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                      horizontal: 16,
+                      vertical: 12,
+                    ),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Row(
+                              children: [
+                                const Text(
+                                  '#1128',
+                                  style: TextStyle(
+                                    fontSize: 14,
+                                    fontWeight: FontWeight.bold,
+                                  ),
+                                ),
+                                const SizedBox(width: 8),
+                                Text(
+                                  '30/10/2022',
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    color: kFontColorPlaceHolder,
+                                  ),
+                                )
+                              ],
+                            ),
+                            Container(
+                              height: 20,
+                              width: 60,
+                              decoration: BoxDecoration(
+                                color: kBackgroundDoneButton,
+                                borderRadius: BorderRadius.circular(20),
+                              ),
+                              child: Center(
+                                child: Text(
+                                  'Done',
+                                  style: TextStyle(
+                                    color: kWhiteColor,
+                                    fontSize: 10,
+                                  ),
                                 ),
                               ),
-                              const SizedBox(width: 8),
-                              Text(
-                                '30/10/2022',
-                                style: TextStyle(
-                                  fontSize: 12,
-                                  color: kFontColorPlaceHolder,
-                                ),
-                              )
-                            ],
-                          ),
-                          Container(
-                            height: 20,
-                            width: 60,
-                            decoration: BoxDecoration(
-                              color: kBackgroundDoneButton,
-                              borderRadius: BorderRadius.circular(20),
                             ),
-                            child: Center(
-                              child: Text(
-                                'Done',
-                                style: TextStyle(
-                                  color: kWhiteColor,
-                                  fontSize: 10,
-                                ),
-                              ),
-                            ),
-                          ),
-                        ],
-                      ),
-                      SizedBox(height: 8),
-                      const Text(
-                        'SYRINGE 100UL CD1700, SYRINGE 100UL CD1700\nSYRINGE 100UL CD1700',
-                        style: TextStyle(
-                          fontSize: 12,
+                          ],
                         ),
-                      ),
-                    ],
+                        SizedBox(height: 8),
+                        const Text(
+                          'SYRINGE 100UL CD1700, SYRINGE 100UL CD1700\nSYRINGE 100UL CD1700',
+                          style: TextStyle(
+                            fontSize: 12,
+                          ),
+                        ),
+                      ],
+                    ),
                   ),
                 ),
               ),

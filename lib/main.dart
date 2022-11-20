@@ -5,12 +5,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smm_apps/core/utils/share_module.dart';
+import 'package:smm_apps/feature/forecast/domain/usecase/forecast_usecase.dart';
+import 'package:smm_apps/feature/forecast/forecast.dart';
+import 'package:smm_apps/feature/forecast/presentation/bloc/bloc/forecast_bloc.dart';
+import 'package:smm_apps/feature/login/domain/usecase/login_usecase.dart';
 import 'package:smm_apps/feature/login/login.dart';
 import 'package:smm_apps/feature/login/presentation/bloc/bloc/login_bloc.dart';
 import 'package:smm_apps/feature/product/domain/usecase/product_use_case.dart';
 import 'package:smm_apps/feature/product/presentation/bloc/bloc/product_bloc.dart';
-// import 'package:smm_apps/feature/product/domain/usecase/product_use_case.dart';
-// import 'package:smm_apps/feature/product/presentation/bloc/bloc/product_bloc.dart';
 import 'package:smm_apps/feature/product/product.dart';
 import 'package:smm_apps/core/utils/common.dart';
 
@@ -46,6 +48,10 @@ class AppModule extends Module {
           Modular.get<NameRoutes>().mainProdcutScreen,
           module: FeatureProductModule(),
         ),
+        ModuleRoute(
+          Modular.get<NameRoutes>().detailProduct,
+          module: ForeCastModule(),
+        ),
       ];
 }
 
@@ -75,11 +81,18 @@ class _SmmAppsState extends State<SmmApps> with WidgetsBindingObserver {
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => LoginBloc(),
+          create: (context) => LoginBloc(
+            useCase: Modular.get<LoginUseCase>(),
+          ),
         ),
         BlocProvider(
           create: (context) => ProductBloc(
             useCase: Modular.get<ProductUseCase>(),
+          ),
+        ),
+        BlocProvider(
+          create: (context) => ForecastBloc(
+            useCase: Modular.get<ForecastUseCase>(),
           ),
         ),
       ],

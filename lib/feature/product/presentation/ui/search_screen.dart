@@ -155,7 +155,7 @@ class _SearchScreenState extends State<SearchScreen> {
                       ),
                     ),
                     child: Image.asset(
-                      'assets/images/picture1.jpeg',
+                      '${data.image}',
                       fit: BoxFit.cover,
                     ),
                   ),

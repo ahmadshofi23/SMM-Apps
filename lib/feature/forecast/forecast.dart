@@ -6,32 +6,20 @@ import 'package:smm_apps/feature/forecast/domain/repository/forecast_repository.
 import 'package:smm_apps/feature/forecast/domain/usecase/forecast_usecase.dart';
 import 'package:smm_apps/feature/forecast/presentation/bloc/bloc/forecast_bloc.dart';
 import 'package:smm_apps/feature/forecast/presentation/ui/forecast_chart_screen.dart';
-import 'package:smm_apps/feature/product/data/repository_impl/product_repository_impl.dart';
-import 'package:smm_apps/feature/product/domain/repository/product_repository.dart';
-import 'package:smm_apps/feature/product/domain/usecase/product_use_case.dart';
-import 'package:smm_apps/feature/product/presentation/bloc/bloc/product_bloc.dart';
+import 'package:smm_apps/feature/product/presentation/ui/detail_product_screen.dart';
 
-import 'presentation/ui/search_screen.dart';
-
-class FeatureProductModule extends Module {
+class ForeCastModule extends Module {
   final _namedRoutes = Modular.get<NameRoutes>();
 
   @override
   List<Bind> get binds => [
         Bind(
-          (_) => ProductRepositoryImpl(),
-        ),
-        Bind(
-          (_) => ProductUseCaseImpl(
-            productRepository: Modular.get<ProductRepository>(),
-          ),
-        ),
-        Bind(
           (_) => ForeCastRepositoryImpl(),
         ),
         Bind(
           (_) => ForeCastUseCaseImpl(
-              forecastRepository: Modular.get<ForecastRepository>()),
+            forecastRepository: Modular.get<ForecastRepository>(),
+          ),
         ),
       ];
 
@@ -43,15 +31,7 @@ class FeatureProductModule extends Module {
             create: (context) => ForecastBloc(
               useCase: Modular.get<ForecastUseCase>(),
             ),
-          ),
-        ),
-        ChildRoute(
-          _namedRoutes.mainProdcutScreen,
-          child: (context, args) => BlocProvider(
-            create: (context) => ProductBloc(
-              useCase: Modular.get<ProductUseCase>(),
-            ),
-            child: const SearchScreen(),
+            child: const DetailProductScreen(),
           ),
         ),
         ChildRoute(
@@ -63,5 +43,14 @@ class FeatureProductModule extends Module {
             child: const ForecastChartScreen(),
           ),
         ),
+        // ChildRoute(
+        //   _namedRoutes.forecastList,
+        //   child: (context, args) => BlocProvider(
+        //     create: (context) => ForecastBloc(
+        //       useCase: Modular.get<ForecastUseCase>(),
+        //     ),
+        //     child: ,
+        //   ),
+        // ),
       ];
 }

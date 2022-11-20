@@ -3,7 +3,6 @@ import 'package:flutter/material.dart';
 import 'package:smm_apps/core/utils/colros.dart';
 import 'package:smm_apps/core/utils/style.dart';
 import 'package:smm_apps/core/widget/default_button.dart';
-import 'package:smm_apps/feature/forecast/presentation/ui/card_forecast_chart.dart';
 import 'package:smm_apps/feature/notification/presentation/ui/notification_main_screen.dart';
 
 class ForecastDetailScreen extends StatefulWidget {

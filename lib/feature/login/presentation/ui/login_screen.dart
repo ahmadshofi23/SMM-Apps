@@ -1,10 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:smm_apps/core/utils/colros.dart';
 import 'package:smm_apps/core/utils/common.dart';
-import 'package:smm_apps/feature/product/presentation/ui/search_screen.dart';
+import 'package:smm_apps/feature/login/presentation/bloc/bloc/login_bloc.dart';
+
+import '../../../product/presentation/ui/search_screen.dart';
 
 class LoginScreen extends StatefulWidget {
   const LoginScreen({Key? key}) : super(key: key);
@@ -15,6 +18,15 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen> {
   final _namedRoutes = Modular.get<NameRoutes>();
+  bool _obscureText = true;
+  TextEditingController username = TextEditingController();
+  TextEditingController password = TextEditingController();
+
+  void _showHidePassword() {
+    setState(() {
+      _obscureText = !_obscureText;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -66,6 +78,7 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         const SizedBox(height: 8),
                         TextFormField(
+                          controller: username,
                           decoration: InputDecoration(
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
@@ -90,11 +103,14 @@ class _LoginScreenState extends State<LoginScreen> {
                         ),
                         const SizedBox(height: 8),
                         TextFormField(
-                          obscureText: true,
+                          controller: password,
+                          obscureText: _obscureText,
                           decoration: InputDecoration(
                             suffixIcon: IconButton(
-                                onPressed: () {},
-                                icon: Icon(Icons.remove_red_eye)),
+                                onPressed: _showHidePassword,
+                                icon: Icon(_obscureText
+                                    ? Icons.visibility_off
+                                    : Icons.visibility)),
                             border: OutlineInputBorder(
                               borderRadius: BorderRadius.circular(10),
                             ),
@@ -130,11 +146,19 @@ class _LoginScreenState extends State<LoginScreen> {
                                 borderRadius: BorderRadius.circular(10),
                               ),
                             ),
-                            onPressed: () => Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) =>
-                                        const SearchScreen())),
+                            onPressed: () {
+                              // Modular.to.pushReplacementNamed(
+                              //   '${_namedRoutes.loginScreen}${_namedRoutes.mainProdcutScreen}',
+                              // );
+                              BlocProvider.of<LoginBloc>(context).add(LoggedIn(
+                                  username: username.text,
+                                  password: password.text));
+                              // Navigator.push(
+                              //     context,
+                              //     MaterialPageRoute(
+                              //         builder: (context) =>
+                              //             const SearchScreen()));
+                            },
                             child: Text(
                               "Login",
                               style: TextStyle(
