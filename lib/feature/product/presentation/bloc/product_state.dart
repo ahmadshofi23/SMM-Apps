@@ -2,24 +2,27 @@ part of 'product_bloc.dart';
 
 class ProductState extends Equatable {
   final bool? isLoading;
-  final List<Product>? listProduts;
+  final List<Producttt>? listProduts;
   final String? message;
+  final List<ProductsEntity>? listProductResponse;
 
-  const ProductState({
-    this.isLoading = true,
-    this.listProduts = const [],
-    this.message,
-  });
+  const ProductState(
+      {this.isLoading = true,
+      this.listProduts = const [],
+      this.message,
+      this.listProductResponse = const []});
 
   ProductState copyWith({
-    List<Product>? listProduct,
+    List<Producttt>? listProduct,
     bool? isLoading,
     String? message,
+    List<ProductsEntity>? listProductResponse,
   }) {
     return ProductState(
       isLoading: isLoading ?? this.isLoading,
       listProduts: listProduct ?? listProduts,
       message: message ?? this.message,
+      listProductResponse: listProductResponse ?? this.listProductResponse,
     );
   }
 
@@ -28,5 +31,6 @@ class ProductState extends Equatable {
         isLoading,
         listProduts,
         message,
+        listProductResponse,
       ];
 }

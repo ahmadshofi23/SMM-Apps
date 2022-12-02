@@ -1,4 +1,6 @@
 import 'package:dio/dio.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:smm_apps/feature/login/data/datasource/local/authentication_preferences.dart';
 import 'package:smm_apps/feature/login/data/models/login_models.dart';
 import 'package:http/http.dart' as http;
 
@@ -11,6 +13,7 @@ class RemoteLoginDataSourceImpl extends RemoteLoginDataSource {
 
   @override
   Future<LoginModels> login(String username, String password) async {
+    final SharedPreferences saveToken = await SharedPreferences.getInstance();
     print('Masuk Remote Login');
     final Dio dio = new Dio();
 
@@ -20,7 +23,12 @@ class RemoteLoginDataSourceImpl extends RemoteLoginDataSource {
       'password': password,
     });
 
-    print(response.data);
+    saveToken.setString('token', response.data['payload']['token']);
+    print('Response Login: ${response.data}');
+    print('Token :${response.data['payload']['token']}');
+    print('Token : ${saveToken.getString('token')}');
+
+    // await authenticationPreferences.saveToken(response.data['token']);
 
     return LoginModels.fromJson(response.data);
 

@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:smm_apps/core/utils/colros.dart';
+import 'package:smm_apps/core/utils/Colors.dart';
 import 'package:smm_apps/core/utils/style.dart';
 
 class NotificationMainScreen extends StatefulWidget {
@@ -14,22 +14,22 @@ class _NotificationMainScreenState extends State<NotificationMainScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: AppColor().kBackgroundColor,
       appBar: AppBar(
-        backgroundColor: kBackgroundColor,
+        backgroundColor: AppColor().kBackgroundColor,
         elevation: 0.0,
         leading: IconButton(
           icon: Icon(
             CupertinoIcons.arrow_left,
             size: 24,
-            color: kBlackColor,
+            color: AppColor().kBlackColor,
           ),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
           'Notifications',
           style: TextStyle(
-            color: kBlackColor,
+            color: AppColor().kBlackColor,
             fontWeight: FontWeight.bold,
             fontSize: 16,
           ),
@@ -46,7 +46,7 @@ class _NotificationMainScreenState extends State<NotificationMainScreen> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: kBlackColor,
+                  color: AppColor().kBlackColor,
                 ),
               ),
               const SizedBox(height: 12),
@@ -60,7 +60,7 @@ class _NotificationMainScreenState extends State<NotificationMainScreen> {
                       height: 79,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: kWhiteColor,
+                        color: AppColor().kWhiteColor,
                         borderRadius: BorderRadius.circular(kDefaultRadius),
                       ),
                       child: Padding(
@@ -80,14 +80,14 @@ class _NotificationMainScreenState extends State<NotificationMainScreen> {
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
-                                    color: kBlackColor,
+                                    color: AppColor().kBlackColor,
                                   ),
                                 ),
                                 Text(
                                   '12.03',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: kFontColorPlaceHolder,
+                                    color: AppColor().kFontColorPlaceHolder,
                                   ),
                                 )
                               ],
@@ -97,7 +97,7 @@ class _NotificationMainScreenState extends State<NotificationMainScreen> {
                               'Forecasting sudah diacc oleh tim admin. Mohon menunggu untuk pengiriman.',
                               style: TextStyle(
                                 fontSize: 12,
-                                color: kFontColorPlaceHolder,
+                                color: AppColor().kFontColorPlaceHolder,
                               ),
                             ),
                           ],
@@ -112,7 +112,7 @@ class _NotificationMainScreenState extends State<NotificationMainScreen> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: kBlackColor,
+                  color: AppColor().kBlackColor,
                 ),
               ),
               const SizedBox(height: 12),
@@ -126,7 +126,7 @@ class _NotificationMainScreenState extends State<NotificationMainScreen> {
                       height: 79,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: kWhiteColor,
+                        color: AppColor().kWhiteColor,
                         borderRadius: BorderRadius.circular(kDefaultRadius),
                       ),
                       child: Padding(
@@ -146,14 +146,14 @@ class _NotificationMainScreenState extends State<NotificationMainScreen> {
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
-                                    color: kBlackColor,
+                                    color: AppColor().kBlackColor,
                                   ),
                                 ),
                                 Text(
                                   '12.03',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: kFontColorPlaceHolder,
+                                    color: AppColor().kFontColorPlaceHolder,
                                   ),
                                 )
                               ],
@@ -163,7 +163,7 @@ class _NotificationMainScreenState extends State<NotificationMainScreen> {
                               'Forecasting sudah diacc oleh tim admin. Mohon menunggu untuk pengiriman.',
                               style: TextStyle(
                                 fontSize: 12,
-                                color: kFontColorPlaceHolder,
+                                color: AppColor().kFontColorPlaceHolder,
                               ),
                             ),
                           ],
@@ -178,7 +178,7 @@ class _NotificationMainScreenState extends State<NotificationMainScreen> {
                 style: TextStyle(
                   fontSize: 18,
                   fontWeight: FontWeight.bold,
-                  color: kBlackColor,
+                  color: AppColor().kBlackColor,
                 ),
               ),
               const SizedBox(height: 12),
@@ -192,7 +192,7 @@ class _NotificationMainScreenState extends State<NotificationMainScreen> {
                       height: 79,
                       width: double.infinity,
                       decoration: BoxDecoration(
-                        color: kWhiteColor,
+                        color: AppColor().kWhiteColor,
                         borderRadius: BorderRadius.circular(kDefaultRadius),
                       ),
                       child: Padding(
@@ -212,14 +212,14 @@ class _NotificationMainScreenState extends State<NotificationMainScreen> {
                                   style: TextStyle(
                                     fontSize: 14,
                                     fontWeight: FontWeight.bold,
-                                    color: kBlackColor,
+                                    color: AppColor().kBlackColor,
                                   ),
                                 ),
                                 Text(
                                   '12.03',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: kFontColorPlaceHolder,
+                                    color: AppColor().kFontColorPlaceHolder,
                                   ),
                                 )
                               ],
@@ -229,7 +229,7 @@ class _NotificationMainScreenState extends State<NotificationMainScreen> {
                               'Forecasting sudah diacc oleh tim admin. Mohon menunggu untuk pengiriman.',
                               style: TextStyle(
                                 fontSize: 12,
-                                color: kFontColorPlaceHolder,
+                                color: AppColor().kFontColorPlaceHolder,
                               ),
                             ),
                           ],

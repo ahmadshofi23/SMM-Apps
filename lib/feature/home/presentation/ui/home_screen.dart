@@ -1,5 +1,10 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:smm_apps/core/utils/Colors.dart';
+import 'package:smm_apps/feature/forecast/presentation/ui/forecast_chart_screen.dart';
+import 'package:smm_apps/feature/forecast/presentation/ui/forecast_detail_screen.dart';
+import 'package:smm_apps/feature/forecast/presentation/ui/main_forecast_screen.dart';
+import 'package:smm_apps/feature/product/presentation/ui/search_screen.dart';
+import 'package:smm_apps/feature/profile/presentation/ui/profile_main_screen.dart';
 
 class HomeScreen extends StatefulWidget {
   const HomeScreen({Key? key}) : super(key: key);
@@ -9,62 +14,40 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
-  // List<Widget> _buildScreens() {
-  //   return [SearchScreen(), ForecastChartScreen()];
-  // }
+  int selectedNavbar = 0;
+  void _changeSelectedNavbar(int index) {
+    setState(() {
+      selectedNavbar = index;
+    });
+  }
 
-  // List<PersistentBottomNavBarItem> _navBarsItems() {
-  //   return [
-  //     PersistentBottomNavBarItem(
-  //       icon: Icon(CupertinoIcons.home),
-  //       title: ("Home"),
-  //       activeColorPrimary: CupertinoColors.activeBlue,
-  //       inactiveColorPrimary: CupertinoColors.systemGrey,
-  //     ),
-  //     PersistentBottomNavBarItem(
-  //       icon: Icon(CupertinoIcons.settings),
-  //       title: ("Forecast"),
-  //       activeColorPrimary: CupertinoColors.activeBlue,
-  //       inactiveColorPrimary: CupertinoColors.systemGrey,
-  //     ),
-  //   ];
-  // }
+  final List<Widget> _buildScreen = [
+    ForecastDetailScreen(),
+    SearchScreen(),
+    MainForecastScreen(),
+    ProfileMainScreen(),
+  ];
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold();
-    // return PersistentTabView(
-    //   context,
-    //   // controller: _controller,
-    //   screens: _buildScreens(),
-    //   items: _navBarsItems(),
-    //   confineInSafeArea: true,
-    //   backgroundColor: Colors.white, // Default is Colors.white.
-    //   handleAndroidBackButtonPress: true, // Default is true.
-    //   resizeToAvoidBottomInset:
-    //       true, // This needs to be true if you want to move up the screen when keyboard appears. Default is true.
-    //   stateManagement: true, // Default is true.
-    //   hideNavigationBarWhenKeyboardShows:
-    //       true, // Recommended to set 'resizeToAvoidBottomInset' as true while using this argument. Default is true.
-    //   decoration: NavBarDecoration(
-    //     borderRadius: BorderRadius.circular(10.0),
-    //     colorBehindNavBar: Colors.white,
-    //   ),
-    //   popAllScreensOnTapOfSelectedTab: true,
-    //   popActionScreens: PopActionScreensType.all,
-    //   itemAnimationProperties: ItemAnimationProperties(
-    //     // Navigation Bar's items animation properties.
-    //     duration: Duration(milliseconds: 200),
-    //     curve: Curves.ease,
-    //   ),
-    //   screenTransitionAnimation: ScreenTransitionAnimation(
-    //     // Screen transition animation on change of selected tab.
-    //     animateTabTransition: true,
-    //     curve: Curves.ease,
-    //     duration: Duration(milliseconds: 200),
-    //   ),
-    //   navBarStyle:
-    //       NavBarStyle.style1, // Choose the nav bar style with this property.
-    // );
+    return Scaffold(
+      body: _buildScreen[selectedNavbar],
+      bottomNavigationBar: BottomNavigationBar(
+        selectedItemColor: AppColor().kOrangeColor,
+        unselectedItemColor: AppColor().kGreyColor,
+        items: const [
+          BottomNavigationBarItem(icon: Icon(Icons.home), label: 'Home'),
+          BottomNavigationBarItem(icon: Icon(Icons.search), label: 'Search'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.settings), label: 'Settings'),
+          BottomNavigationBarItem(
+              icon: Icon(Icons.account_circle_outlined), label: 'Profile'),
+        ],
+        currentIndex: selectedNavbar,
+        onTap: _changeSelectedNavbar,
+        showUnselectedLabels: true,
+        showSelectedLabels: true,
+      ),
+    );
   }
 }

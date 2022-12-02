@@ -1,5 +1,6 @@
 import 'package:bloc/bloc.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter/material.dart';
 import 'package:meta/meta.dart';
 import 'package:smm_apps/feature/login/domain/usecase/login_usecase.dart';
 import 'dart:async';
@@ -22,7 +23,7 @@ class LoginBloc extends Bloc<LoginEvent, LoginState> {
 
   Stream<LoginState> _login(String username, String password) async* {
     try {
-      final response = await useCase.login(username, password);
+      await useCase.login(username, password);
     } catch (e) {}
     // yield _login(username, password);
   }

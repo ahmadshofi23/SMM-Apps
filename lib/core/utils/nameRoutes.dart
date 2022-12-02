@@ -5,4 +5,7 @@ class NameRoutes {
   String homeScreen = '/homeScreen';
   String forecastList = '/forecastList';
   String detailProduct = '/detailProduct';
+
+  //profile
+  String mainProfileScreen = '/mainProfileScreen';
 }

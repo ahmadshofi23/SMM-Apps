@@ -3,20 +3,26 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:google_fonts/google_fonts.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smm_apps/core/utils/share_module.dart';
 import 'package:smm_apps/feature/forecast/domain/usecase/forecast_usecase.dart';
 import 'package:smm_apps/feature/forecast/forecast.dart';
 import 'package:smm_apps/feature/forecast/presentation/bloc/bloc/forecast_bloc.dart';
+import 'package:smm_apps/feature/login/data/datasource/local/authentication_preferences.dart';
 import 'package:smm_apps/feature/login/domain/usecase/login_usecase.dart';
 import 'package:smm_apps/feature/login/login.dart';
 import 'package:smm_apps/feature/login/presentation/bloc/bloc/login_bloc.dart';
 import 'package:smm_apps/feature/product/domain/usecase/product_use_case.dart';
-import 'package:smm_apps/feature/product/presentation/bloc/bloc/product_bloc.dart';
+import 'package:smm_apps/feature/product/presentation/bloc/product_bloc.dart';
 import 'package:smm_apps/feature/product/product.dart';
 import 'package:smm_apps/core/utils/common.dart';
+import 'package:smm_apps/feature/profile/profile.dart';
 
 void main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+  await ScreenUtil.ensureScreenSize();
   await runZonedGuarded(() async {
     runApp(
       ModularApp(module: AppModule(), child: SmmApps()),
@@ -36,6 +42,8 @@ class AppModule extends Module {
   @override
   List<Bind> get binds => [
         Bind((_) => NameRoutes(), export: true),
+        Bind((_) => AuthenticationPreferences(
+            sharedPreferences: Modular.get<SharedPreferences>())),
       ];
 
   @override
@@ -51,6 +59,10 @@ class AppModule extends Module {
         ModuleRoute(
           Modular.get<NameRoutes>().detailProduct,
           module: ForeCastModule(),
+        ),
+        ModuleRoute(
+          Modular.get<NameRoutes>().mainProfileScreen,
+          module: FeatureProfileModule(),
         ),
       ];
 }
@@ -78,6 +90,8 @@ class _SmmAppsState extends State<SmmApps> with WidgetsBindingObserver {
 
   @override
   Widget build(BuildContext context) {
+    // var height = MediaQuery.of(context).size.height;
+    // var width = MediaQuery.of(context).size.width;
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -98,14 +112,19 @@ class _SmmAppsState extends State<SmmApps> with WidgetsBindingObserver {
       ],
       child: FutureBuilder(
         builder: (context, snapshot) {
-          return MaterialApp.router(
-            debugShowCheckedModeBanner: false,
-            theme: ThemeData(
-              fontFamily: GoogleFonts.manrope().fontFamily,
-              // primarySwatch: Colors.blue,
+          return ScreenUtilInit(
+            minTextAdapt: true,
+            splitScreenMode: true,
+            designSize: Size(375, 812),
+            builder: (context, child) => MaterialApp.router(
+              debugShowCheckedModeBanner: false,
+              theme: ThemeData(
+                fontFamily: GoogleFonts.manrope().fontFamily,
+                // primarySwatch: Colors.blue,
+              ),
+              routeInformationParser: Modular.routeInformationParser,
+              routerDelegate: Modular.routerDelegate,
             ),
-            routeInformationParser: Modular.routeInformationParser,
-            routerDelegate: Modular.routerDelegate,
           );
         },
       ),

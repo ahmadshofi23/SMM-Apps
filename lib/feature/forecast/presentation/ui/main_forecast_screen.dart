@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smm_apps/core/utils/colros.dart';
+import 'package:smm_apps/core/utils/Colors.dart';
 import 'package:smm_apps/core/utils/style.dart';
 import 'package:smm_apps/feature/forecast/presentation/ui/forecast_detail_screen.dart';
 
@@ -16,7 +16,7 @@ class _MainForecastScreenState extends State<MainForecastScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: AppColor().kBackgroundColor,
       body: SafeArea(
         child: Padding(
           padding: const EdgeInsets.symmetric(horizontal: 23),
@@ -27,7 +27,7 @@ class _MainForecastScreenState extends State<MainForecastScreen> {
                 'Forecast',
                 style: TextStyle(
                   fontSize: 32,
-                  color: kBlackColor,
+                  color: AppColor().kBlackColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -36,7 +36,7 @@ class _MainForecastScreenState extends State<MainForecastScreen> {
                 'Sedang berlangsung',
                 style: TextStyle(
                   fontSize: 16,
-                  color: kBlackColor,
+                  color: AppColor().kBlackColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -45,7 +45,7 @@ class _MainForecastScreenState extends State<MainForecastScreen> {
                 height: 156,
                 width: double.infinity,
                 decoration: BoxDecoration(
-                  color: kWhiteColor,
+                  color: AppColor().kWhiteColor,
                   borderRadius: BorderRadius.circular(kDefaultRadius),
                 ),
                 child: Padding(
@@ -73,7 +73,7 @@ class _MainForecastScreenState extends State<MainForecastScreen> {
                                 '30/10/2022',
                                 style: TextStyle(
                                   fontSize: 12,
-                                  color: kFontColorPlaceHolder,
+                                  color: AppColor().kFontColorPlaceHolder,
                                 ),
                               )
                             ],
@@ -82,14 +82,14 @@ class _MainForecastScreenState extends State<MainForecastScreen> {
                             height: 20,
                             width: 60,
                             decoration: BoxDecoration(
-                              color: kOrangeColor,
+                              color: AppColor().kOrangeColor,
                               borderRadius: BorderRadius.circular(20),
                             ),
                             child: Center(
                               child: Text(
                                 'Waiting',
                                 style: TextStyle(
-                                  color: kWhiteColor,
+                                  color: AppColor().kWhiteColor,
                                   fontSize: 10,
                                 ),
                               ),
@@ -104,42 +104,44 @@ class _MainForecastScreenState extends State<MainForecastScreen> {
                           fontSize: 12,
                         ),
                       ),
-                      // Expanded(
-                      //   child: Stepper(
-                      //     type: stepperType,
-                      //     // physics: ScrollPhysics(),
-                      //     currentStep: _currentStep,
-                      //     onStepTapped: (step) => tapped(step),
-                      //     // onStepContinue: continued,
-                      //     // onStepCancel: cancel,
-                      //     steps: <Step>[
-                      //       Step(
-                      //         title: Text(''),
-                      //         content: Container(),
-                      //         isActive: _currentStep >= 0,
-                      //         state: _currentStep >= 0
-                      //             ? StepState.complete
-                      //             : StepState.disabled,
-                      //       ),
-                      //       Step(
-                      //         title: new Text(''),
-                      //         content: Container(),
-                      //         isActive: _currentStep >= 0,
-                      //         state: _currentStep >= 1
-                      //             ? StepState.complete
-                      //             : StepState.disabled,
-                      //       ),
-                      //       Step(
-                      //         title: new Text(''),
-                      //         content: Container(),
-                      //         isActive: _currentStep >= 0,
-                      //         state: _currentStep >= 2
-                      //             ? StepState.complete
-                      //             : StepState.disabled,
-                      //       ),
-                      //     ],
-                      //   ),
-                      // ),
+                      Expanded(
+                        child: Stepper(
+                          type: StepperType.horizontal,
+
+                          // physics: ScrollPhysics(),
+                          currentStep: _currentStep,
+                          onStepTapped: (step) => tapped(step),
+                          // onStepContinue: continued,
+                          // onStepCancel: cancel,
+                          steps: <Step>[
+                            Step(
+                              title: Text('Acc'),
+                              content: Container(),
+                              isActive: _currentStep >= 0,
+                              state: _currentStep >= 0
+                                  ? StepState.complete
+                                  : StepState.disabled,
+                            ),
+                            Step(
+                              title: Text('Acc'),
+                              content: SizedBox(),
+                              isActive: _currentStep >= 0,
+                              state: _currentStep >= 0
+                                  ? StepState.complete
+                                  : StepState.disabled,
+                            ),
+                            Step(
+                              subtitle: Text('Acc'),
+                              title: new Text(''),
+                              content: SizedBox(),
+                              isActive: _currentStep >= 0,
+                              state: _currentStep >= 2
+                                  ? StepState.complete
+                                  : StepState.disabled,
+                            ),
+                          ],
+                        ),
+                      ),
                     ],
                   ),
                 ),
@@ -151,7 +153,7 @@ class _MainForecastScreenState extends State<MainForecastScreen> {
                 'History',
                 style: TextStyle(
                   fontSize: 16,
-                  color: kBlackColor,
+                  color: AppColor().kBlackColor,
                   fontWeight: FontWeight.bold,
                 ),
               ),
@@ -167,7 +169,7 @@ class _MainForecastScreenState extends State<MainForecastScreen> {
                   height: 86,
                   width: double.infinity,
                   decoration: BoxDecoration(
-                    color: kWhiteColor,
+                    color: AppColor().kWhiteColor,
                     borderRadius: BorderRadius.circular(kDefaultRadius),
                   ),
                   child: Padding(
@@ -195,7 +197,7 @@ class _MainForecastScreenState extends State<MainForecastScreen> {
                                   '30/10/2022',
                                   style: TextStyle(
                                     fontSize: 12,
-                                    color: kFontColorPlaceHolder,
+                                    color: AppColor().kFontColorPlaceHolder,
                                   ),
                                 )
                               ],
@@ -204,14 +206,14 @@ class _MainForecastScreenState extends State<MainForecastScreen> {
                               height: 20,
                               width: 60,
                               decoration: BoxDecoration(
-                                color: kBackgroundDoneButton,
+                                color: AppColor().kBackgroundDoneButton,
                                 borderRadius: BorderRadius.circular(20),
                               ),
                               child: Center(
                                 child: Text(
                                   'Done',
                                   style: TextStyle(
-                                    color: kWhiteColor,
+                                    color: AppColor().kWhiteColor,
                                     fontSize: 10,
                                   ),
                                 ),

@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:smm_apps/core/utils/colros.dart';
+import 'package:smm_apps/core/utils/Colors.dart';
 
 class DefaultButton extends StatelessWidget {
   final String text;
@@ -14,7 +14,7 @@ class DefaultButton extends StatelessWidget {
       height: 50,
       child: ElevatedButton(
         style: ElevatedButton.styleFrom(
-          primary: kOrangeColor,
+          primary: AppColor().kOrangeColor,
           shape: RoundedRectangleBorder(
             borderRadius: BorderRadius.circular(10),
           ),
@@ -23,7 +23,7 @@ class DefaultButton extends StatelessWidget {
         child: Text(
           text,
           style: TextStyle(
-            color: kWhiteColor,
+            color: AppColor().kWhiteColor,
           ),
         ),
       ),

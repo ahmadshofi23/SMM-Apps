@@ -3,12 +3,11 @@ import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_datetime_picker/flutter_datetime_picker.dart';
-import 'package:smm_apps/core/utils/colros.dart';
+import 'package:smm_apps/core/utils/Colors.dart';
 import 'package:smm_apps/core/utils/style.dart';
 import 'package:smm_apps/core/widget/default_button.dart';
 import 'package:smm_apps/feature/forecast/domain/entity/product_cart_entity.dart';
 import 'package:smm_apps/feature/forecast/presentation/bloc/bloc/forecast_bloc.dart';
-import 'package:smm_apps/feature/forecast/presentation/ui/forecast_detail_screen.dart';
 import 'package:smm_apps/feature/forecast/presentation/ui/main_forecast_screen.dart';
 
 class ForecastChartScreen extends StatefulWidget {
@@ -32,22 +31,22 @@ class _ForecastChartScreenState extends State<ForecastChartScreen> {
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
-        backgroundColor: kBackgroundColor,
+        backgroundColor: AppColor().kBackgroundColor,
         appBar: AppBar(
-          backgroundColor: kBackgroundColor,
+          backgroundColor: AppColor().kBackgroundColor,
           elevation: 0.0,
           leading: IconButton(
             icon: Icon(
               CupertinoIcons.arrow_left,
               size: 24,
-              color: kBlackColor,
+              color: AppColor().kBlackColor,
             ),
             onPressed: () => Navigator.pop(context),
           ),
           title: Text(
             'Forecast',
             style: TextStyle(
-              color: kBlackColor,
+              color: AppColor().kBlackColor,
               fontWeight: FontWeight.bold,
               fontSize: 16,
             ),
@@ -75,7 +74,7 @@ class _ForecastChartScreenState extends State<ForecastChartScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: kBlackColor,
+                          color: AppColor().kBlackColor,
                         ),
                       ),
                       const SizedBox(height: 8),
@@ -98,7 +97,7 @@ class _ForecastChartScreenState extends State<ForecastChartScreen> {
                         style: TextStyle(
                           fontSize: 16,
                           fontWeight: FontWeight.bold,
-                          color: kBlackColor,
+                          color: AppColor().kBlackColor,
                         ),
                       ),
                       const SizedBox(height: 12),
@@ -107,11 +106,11 @@ class _ForecastChartScreenState extends State<ForecastChartScreen> {
                         child: TextFormField(
                           controller: date,
                           decoration: InputDecoration(
-                            fillColor: kWhiteColor,
+                            fillColor: AppColor().kWhiteColor,
                             filled: true,
                             hintText: '(DD/MM/YYY)',
                             hintStyle: TextStyle(
-                                color: kGreyColor,
+                                color: AppColor().kGreyColor,
                                 fontSize: 14,
                                 fontWeight: FontWeight.normal),
                             suffixIcon: IconButton(
@@ -132,27 +131,27 @@ class _ForecastChartScreenState extends State<ForecastChartScreen> {
                               },
                               icon: const Icon(Icons.calendar_month),
                               iconSize: 24,
-                              color: kBlackColor,
+                              color: AppColor().kBlackColor,
                             ),
                             border: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.circular(kDefaultRadius),
                               borderSide: BorderSide(
-                                color: kWhiteColor,
+                                color: AppColor().kWhiteColor,
                               ),
                             ),
                             focusedBorder: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.circular(kDefaultRadius),
                               borderSide: BorderSide(
-                                color: kWhiteColor,
+                                color: AppColor().kWhiteColor,
                               ),
                             ),
                             enabledBorder: OutlineInputBorder(
                               borderRadius:
                                   BorderRadius.circular(kDefaultRadius),
                               borderSide: BorderSide(
-                                color: kWhiteColor,
+                                color: AppColor().kWhiteColor,
                               ),
                             ),
                           ),
@@ -203,7 +202,7 @@ class CardForecastChart extends StatelessWidget {
     return Container(
       height: 89,
       decoration: BoxDecoration(
-        color: kWhiteColor,
+        color: AppColor().kWhiteColor,
         borderRadius: BorderRadius.circular(kDefaultRadius),
       ),
       child: Padding(
@@ -214,7 +213,7 @@ class CardForecastChart extends StatelessWidget {
               height: 72,
               width: 72,
               decoration: BoxDecoration(
-                color: kFillCardColor,
+                color: AppColor().kFillCardColor,
                 borderRadius: BorderRadius.circular(kDefaultRadius),
               ),
               child: Image.asset(
@@ -232,7 +231,7 @@ class CardForecastChart extends StatelessWidget {
                       data.name!,
                       style: TextStyle(
                         fontSize: 14,
-                        color: kBlackColor,
+                        color: AppColor().kBlackColor,
                       ),
                     ),
                     const SizedBox(height: 8),
@@ -240,7 +239,7 @@ class CardForecastChart extends StatelessWidget {
                       'NUV792542 - 11/12/24',
                       style: TextStyle(
                         fontSize: 12,
-                        color: kFontColorPlaceHolder,
+                        color: AppColor().kFontColorPlaceHolder,
                       ),
                     ),
                     const SizedBox(height: 4),
@@ -252,7 +251,7 @@ class CardForecastChart extends StatelessWidget {
                           child: Icon(
                             CupertinoIcons.minus_square,
                             size: 20,
-                            color: kBlackColor,
+                            color: AppColor().kBlackColor,
                           ),
                         ),
                         const SizedBox(width: 8),
@@ -261,7 +260,7 @@ class CardForecastChart extends StatelessWidget {
                           style: TextStyle(
                             fontSize: 14,
                             fontWeight: FontWeight.bold,
-                            color: kBlackColor,
+                            color: AppColor().kBlackColor,
                           ),
                         ),
                         const SizedBox(width: 8),
@@ -270,7 +269,7 @@ class CardForecastChart extends StatelessWidget {
                           child: Icon(
                             CupertinoIcons.plus_square,
                             size: 20,
-                            color: kBlackColor,
+                            color: AppColor().kBlackColor,
                           ),
                         ),
                       ],

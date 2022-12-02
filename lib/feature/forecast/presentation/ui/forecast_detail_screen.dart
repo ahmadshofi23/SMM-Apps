@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:smm_apps/core/utils/colros.dart';
+import 'package:smm_apps/core/utils/Colors.dart';
 import 'package:smm_apps/core/utils/style.dart';
 import 'package:smm_apps/core/widget/default_button.dart';
 import 'package:smm_apps/feature/notification/presentation/ui/notification_main_screen.dart';
@@ -16,22 +16,22 @@ class _ForecastDetailScreenState extends State<ForecastDetailScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: kBackgroundColor,
+      backgroundColor: AppColor().kBackgroundColor,
       appBar: AppBar(
-        backgroundColor: kBackgroundColor,
+        backgroundColor: AppColor().kBackgroundColor,
         elevation: 0.0,
         leading: IconButton(
           icon: Icon(
             CupertinoIcons.arrow_left,
             size: 24,
-            color: kBlackColor,
+            color: AppColor().kBlackColor,
           ),
           onPressed: () => Navigator.pop(context),
         ),
         title: Text(
           'Forecast #1127',
           style: TextStyle(
-            color: kBlackColor,
+            color: AppColor().kBlackColor,
             fontWeight: FontWeight.bold,
             fontSize: 16,
           ),
@@ -47,7 +47,7 @@ class _ForecastDetailScreenState extends State<ForecastDetailScreen> {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: kBlackColor,
+                color: AppColor().kBlackColor,
               ),
             ),
             const SizedBox(height: 12),
@@ -55,7 +55,7 @@ class _ForecastDetailScreenState extends State<ForecastDetailScreen> {
               height: 50,
               width: double.infinity,
               decoration: BoxDecoration(
-                color: kWhiteColor,
+                color: AppColor().kWhiteColor,
                 borderRadius: BorderRadius.circular(kDefaultRadius),
               ),
               child: Row(
@@ -64,7 +64,7 @@ class _ForecastDetailScreenState extends State<ForecastDetailScreen> {
                     height: double.infinity,
                     width: 10,
                     decoration: BoxDecoration(
-                      color: kOrangeColor,
+                      color: AppColor().kOrangeColor,
                       borderRadius: BorderRadius.only(
                         topLeft: Radius.circular(kDefaultRadius),
                         bottomLeft: Radius.circular(kDefaultRadius),
@@ -74,7 +74,7 @@ class _ForecastDetailScreenState extends State<ForecastDetailScreen> {
                   const SizedBox(width: 9),
                   Icon(
                     Icons.alarm_rounded,
-                    color: kOrangeColor,
+                    color: AppColor().kOrangeColor,
                     size: 32,
                   ),
                   Padding(
@@ -92,7 +92,7 @@ class _ForecastDetailScreenState extends State<ForecastDetailScreen> {
                         Text(
                           'Sedang menunggu acc dari tim admin',
                           style: TextStyle(
-                            color: kTextColor,
+                            color: AppColor().kTextColor,
                             fontSize: 14,
                           ),
                         )
@@ -108,7 +108,7 @@ class _ForecastDetailScreenState extends State<ForecastDetailScreen> {
               style: TextStyle(
                 fontSize: 16,
                 fontWeight: FontWeight.bold,
-                color: kBlackColor,
+                color: AppColor().kBlackColor,
               ),
             ),
             const SizedBox(height: 12),
@@ -122,7 +122,7 @@ class _ForecastDetailScreenState extends State<ForecastDetailScreen> {
                     child: Container(
                       height: 89,
                       decoration: BoxDecoration(
-                        color: kWhiteColor,
+                        color: AppColor().kWhiteColor,
                         borderRadius: BorderRadius.circular(kDefaultRadius),
                       ),
                       child: Padding(
@@ -133,7 +133,7 @@ class _ForecastDetailScreenState extends State<ForecastDetailScreen> {
                               height: 72,
                               width: 72,
                               decoration: BoxDecoration(
-                                color: kFillCardColor,
+                                color: AppColor().kFillCardColor,
                                 borderRadius:
                                     BorderRadius.circular(kDefaultRadius),
                               ),
@@ -152,7 +152,7 @@ class _ForecastDetailScreenState extends State<ForecastDetailScreen> {
                                       'SYRINGE 100UL CD1700',
                                       style: TextStyle(
                                         fontSize: 14,
-                                        color: kBlackColor,
+                                        color: AppColor().kBlackColor,
                                       ),
                                     ),
                                     const SizedBox(height: 8),
@@ -160,7 +160,7 @@ class _ForecastDetailScreenState extends State<ForecastDetailScreen> {
                                       'NUV792542 - 11/12/24',
                                       style: TextStyle(
                                         fontSize: 12,
-                                        color: kFontColorPlaceHolder,
+                                        color: AppColor().kFontColorPlaceHolder,
                                       ),
                                     ),
                                     const SizedBox(height: 4),
@@ -168,7 +168,7 @@ class _ForecastDetailScreenState extends State<ForecastDetailScreen> {
                                       'Qty 10 Pcs',
                                       style: TextStyle(
                                         fontSize: 12,
-                                        color: kFontColorPlaceHolder,
+                                        color: AppColor().kFontColorPlaceHolder,
                                       ),
                                     ),
                                     const SizedBox(height: 4),

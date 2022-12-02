@@ -2,12 +2,13 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:smm_apps/core/utils/colros.dart';
+import 'package:smm_apps/core/utils/Colors.dart';
 import 'package:smm_apps/core/widget/default_button.dart';
 import 'package:smm_apps/feature/forecast/domain/entity/product_cart_entity.dart';
 import 'package:smm_apps/feature/forecast/presentation/bloc/bloc/forecast_bloc.dart';
 import 'package:smm_apps/feature/forecast/presentation/ui/forecast_chart_screen.dart';
 import 'package:smm_apps/feature/product/domain/entity/product_entities.dart';
+import 'package:smm_apps/feature/product/domain/entity/product_respons_entity.dart';
 
 class DetailProductScreen extends StatefulWidget {
   const DetailProductScreen({Key? key}) : super(key: key);
@@ -25,11 +26,11 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
 
   @override
   Widget build(BuildContext context) {
-    final args = ModalRoute.of(context)!.settings.arguments as Product;
+    final args = ModalRoute.of(context)!.settings.arguments as ProductsEntity;
     return AnnotatedRegion<SystemUiOverlayStyle>(
       value: SystemUiOverlayStyle.dark,
       child: Scaffold(
-          backgroundColor: kBackgroundColor,
+          backgroundColor: AppColor().kBackgroundColor,
           body: SafeArea(
             child: Padding(
               padding: const EdgeInsets.symmetric(horizontal: 16),
@@ -45,7 +46,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                     width: double.infinity,
                     height: 229,
                     decoration: BoxDecoration(
-                      color: kFillCardColor,
+                      color: AppColor().kFillCardColor,
                       borderRadius: BorderRadius.circular(8),
                     ),
                     child: ClipRRect(
@@ -61,7 +62,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                     '${args.name}',
                     style: TextStyle(
                       fontSize: 18,
-                      color: kBlackColor,
+                      color: AppColor().kBlackColor,
                     ),
                   ),
                   const SizedBox(height: 16),
@@ -70,7 +71,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                     style: TextStyle(
                       fontWeight: FontWeight.bold,
                       fontSize: 16,
-                      color: kBlackColor,
+                      color: AppColor().kBlackColor,
                     ),
                   ),
                   const SizedBox(height: 8),
@@ -80,7 +81,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                         'Packing',
                         style: TextStyle(
                           fontSize: 16,
-                          color: kFontColorPlaceHolder,
+                          color: AppColor().kFontColorPlaceHolder,
                         ),
                       ),
                       const SizedBox(width: 36),
@@ -88,7 +89,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                         'Strip',
                         style: TextStyle(
                           fontSize: 16,
-                          color: kBlackColor,
+                          color: AppColor().kBlackColor,
                         ),
                       ),
                     ],
@@ -100,7 +101,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                         'Satuan',
                         style: TextStyle(
                           fontSize: 16,
-                          color: kFontColorPlaceHolder,
+                          color: AppColor().kFontColorPlaceHolder,
                         ),
                       ),
                       SizedBox(width: 40),
@@ -108,7 +109,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                         '100 qty per kit',
                         style: TextStyle(
                           fontSize: 16,
-                          color: kBlackColor,
+                          color: AppColor().kBlackColor,
                         ),
                       ),
                     ],
@@ -120,7 +121,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                         'Batch',
                         style: TextStyle(
                           fontSize: 16,
-                          color: kFontColorPlaceHolder,
+                          color: AppColor().kFontColorPlaceHolder,
                         ),
                       ),
                       SizedBox(width: 50),
@@ -128,7 +129,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                         'NUV792542',
                         style: TextStyle(
                           fontSize: 16,
-                          color: kBlackColor,
+                          color: AppColor().kBlackColor,
                         ),
                       ),
                     ],
@@ -140,7 +141,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                         'Exp date',
                         style: TextStyle(
                           fontSize: 16,
-                          color: kFontColorPlaceHolder,
+                          color: AppColor().kFontColorPlaceHolder,
                         ),
                       ),
                       SizedBox(width: 28),
@@ -148,7 +149,7 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                         '11/02/2024',
                         style: TextStyle(
                           fontSize: 16,
-                          color: kBlackColor,
+                          color: AppColor().kBlackColor,
                         ),
                       ),
                     ],
@@ -157,28 +158,28 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
                   DefaultButton(
                     text: 'Tambah ke Cart',
                     press: () async {
-                      BlocProvider.of<ForecastBloc>(context).add(
-                        AddToChart(
-                          productCart: ProductCart(
-                            name: args.name,
-                            image: args.image,
-                            expireDate: args.expireDate,
-                            packing: args.packing,
-                            satuan: args.satuan,
-                          ),
-                        ),
-                      );
-                      Future.delayed(
-                        const Duration(milliseconds: 1000),
-                        () {
-                          return Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                              builder: (context) => const ForecastChartScreen(),
-                            ),
-                          );
-                        },
-                      );
+                      // BlocProvider.of<ForecastBloc>(context).add(
+                      //   AddToChart(
+                      //     productCart: ProductCart(
+                      //       name: args.name,
+                      //       image: args.image,
+                      //       expireDate: args.expireDate,
+                      //       packing: args.packing,
+                      //       satuan: args.satuan,
+                      //     ),
+                      //   ),
+                      // );
+                      // Future.delayed(
+                      //   const Duration(milliseconds: 1000),
+                      //   () {
+                      //     return Navigator.push(
+                      //       context,
+                      //       MaterialPageRoute(
+                      //         builder: (context) => const ForecastChartScreen(),
+                      //       ),
+                      //     );
+                      //   },
+                      // );
                     },
                   )
                 ],

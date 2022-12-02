@@ -6,10 +6,11 @@ import 'package:smm_apps/feature/forecast/domain/repository/forecast_repository.
 import 'package:smm_apps/feature/forecast/domain/usecase/forecast_usecase.dart';
 import 'package:smm_apps/feature/forecast/presentation/bloc/bloc/forecast_bloc.dart';
 import 'package:smm_apps/feature/forecast/presentation/ui/forecast_chart_screen.dart';
+import 'package:smm_apps/feature/product/data/remote/remote_product_dataSource.dart';
 import 'package:smm_apps/feature/product/data/repository_impl/product_repository_impl.dart';
 import 'package:smm_apps/feature/product/domain/repository/product_repository.dart';
 import 'package:smm_apps/feature/product/domain/usecase/product_use_case.dart';
-import 'package:smm_apps/feature/product/presentation/bloc/bloc/product_bloc.dart';
+import 'package:smm_apps/feature/product/presentation/bloc/product_bloc.dart';
 
 import 'presentation/ui/search_screen.dart';
 
@@ -18,8 +19,11 @@ class FeatureProductModule extends Module {
 
   @override
   List<Bind> get binds => [
+        Bind((_) => RemoteProductDataSourceImpl()),
         Bind(
-          (_) => ProductRepositoryImpl(),
+          (_) => ProductRepositoryImpl(
+            remoteProductDataSource: Modular.get<RemoteProductDataSource>(),
+          ),
         ),
         Bind(
           (_) => ProductUseCaseImpl(

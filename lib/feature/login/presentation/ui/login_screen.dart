@@ -3,9 +3,11 @@ import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:smm_apps/core/utils/colros.dart';
+import 'package:smm_apps/core/utils/Colors.dart';
 import 'package:smm_apps/core/utils/common.dart';
+import 'package:smm_apps/feature/home/presentation/ui/home_screen.dart';
 import 'package:smm_apps/feature/login/presentation/bloc/bloc/login_bloc.dart';
+import 'package:flutter_screenutil/flutter_screenutil.dart';
 
 import '../../../product/presentation/ui/search_screen.dart';
 
@@ -28,6 +30,16 @@ class _LoginScreenState extends State<LoginScreen> {
     });
   }
 
+  void _navigateToHome(BuildContext context) {
+    // username.clear();
+    // password.clear();
+
+    BlocProvider.of<LoginBloc>(context)
+        .add(LoggedIn(username: username.text, password: password.text));
+    Navigator.push(
+        context, MaterialPageRoute(builder: (context) => HomeScreen()));
+  }
+
   @override
   Widget build(BuildContext context) {
     return AnnotatedRegion<SystemUiOverlayStyle>(
@@ -37,7 +49,7 @@ class _LoginScreenState extends State<LoginScreen> {
           child: SingleChildScrollView(
             scrollDirection: Axis.vertical,
             child: Padding(
-              padding: EdgeInsets.only(top: 80),
+              padding: EdgeInsets.only(top: 80.h),
               child: Column(
                 mainAxisAlignment: MainAxisAlignment.center,
                 crossAxisAlignment: CrossAxisAlignment.start,
@@ -45,25 +57,25 @@ class _LoginScreenState extends State<LoginScreen> {
                   Center(
                     child: Image.asset(
                       'assets/images/logo.png',
-                      height: 142,
-                      width: 163,
+                      height: 142.h,
+                      width: 163.w,
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.only(left: 20, top: 64),
+                    padding: EdgeInsets.only(left: 20.w, top: 64.h),
                     child: Text(
                       "Login",
                       style: TextStyle(
                         fontWeight: FontWeight.bold,
-                        fontSize: 32,
-                        color: kBlackColor,
+                        fontSize: 32.sp,
+                        color: AppColor().kBlackColor,
                       ),
                     ),
                   ),
                   Padding(
-                    padding: const EdgeInsets.symmetric(
-                      horizontal: 20,
-                      vertical: 20,
+                    padding: EdgeInsets.symmetric(
+                      horizontal: 20.h,
+                      vertical: 20.w,
                     ),
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
@@ -71,12 +83,12 @@ class _LoginScreenState extends State<LoginScreen> {
                         Text(
                           'Email',
                           style: TextStyle(
-                            fontSize: 14,
-                            color: kBlackColor,
+                            fontSize: 14.sp,
+                            color: AppColor().kBlackColor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8.sp),
                         TextFormField(
                           controller: username,
                           decoration: InputDecoration(
@@ -85,23 +97,23 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             hintText: 'Masukan email anda',
                             hintStyle: TextStyle(
-                              fontSize: 14,
-                              color: kBlackColor,
+                              fontSize: 14.sp,
+                              color: AppColor().kBlackColor,
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 20,
+                        SizedBox(
+                          height: 20.h,
                         ),
                         Text(
                           'Password',
                           style: TextStyle(
-                            fontSize: 14,
-                            color: kBlackColor,
+                            fontSize: 14.sp,
+                            color: AppColor().kBlackColor,
                             fontWeight: FontWeight.bold,
                           ),
                         ),
-                        const SizedBox(height: 8),
+                        SizedBox(height: 8.h),
                         TextFormField(
                           controller: password,
                           obscureText: _obscureText,
@@ -116,13 +128,13 @@ class _LoginScreenState extends State<LoginScreen> {
                             ),
                             hintText: 'Masukan password anda',
                             hintStyle: TextStyle(
-                              fontSize: 14,
-                              color: kBlackColor,
+                              fontSize: 14.sp,
+                              color: AppColor().kBlackColor,
                             ),
                           ),
                         ),
-                        const SizedBox(
-                          height: 8,
+                        SizedBox(
+                          height: 8.h,
                         ),
                         Align(
                           alignment: Alignment.centerRight,
@@ -130,18 +142,18 @@ class _LoginScreenState extends State<LoginScreen> {
                             "Forgot Password?",
                             style: TextStyle(
                               fontFamily: GoogleFonts.manrope().fontFamily,
-                              fontSize: 12,
-                              color: kGreyColor,
+                              fontSize: 12.sp,
+                              color: AppColor().kGreyColor,
                             ),
                           ),
                         ),
-                        const SizedBox(height: 29),
+                        SizedBox(height: 29.h),
                         SizedBox(
                           width: double.infinity,
-                          height: 50,
+                          height: 50.h,
                           child: ElevatedButton(
                             style: ElevatedButton.styleFrom(
-                              primary: kOrangeColor,
+                              primary: AppColor().kOrangeColor,
                               shape: RoundedRectangleBorder(
                                 borderRadius: BorderRadius.circular(10),
                               ),
@@ -150,9 +162,10 @@ class _LoginScreenState extends State<LoginScreen> {
                               // Modular.to.pushReplacementNamed(
                               //   '${_namedRoutes.loginScreen}${_namedRoutes.mainProdcutScreen}',
                               // );
-                              BlocProvider.of<LoginBloc>(context).add(LoggedIn(
-                                  username: username.text,
-                                  password: password.text));
+                              _navigateToHome(context);
+                              // BlocProvider.of<LoginBloc>(context).add(LoggedIn(
+                              //     username: username.text,
+                              //     password: password.text));
                               // Navigator.push(
                               //     context,
                               //     MaterialPageRoute(
@@ -162,12 +175,12 @@ class _LoginScreenState extends State<LoginScreen> {
                             child: Text(
                               "Login",
                               style: TextStyle(
-                                color: kWhiteColor,
+                                color: AppColor().kWhiteColor,
                               ),
                             ),
                           ),
                         ),
-                        const SizedBox(height: 20),
+                        SizedBox(height: 20.h),
                       ],
                     ),
                   ),
