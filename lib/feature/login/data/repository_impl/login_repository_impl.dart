@@ -9,6 +9,10 @@ class LoginRepositoryImpl implements LoginRepository {
   @override
   Future<LoginResponseEntity> login(String username, String password) async {
     final response = await remoteLoginDataSource.login(username, password);
+    if (response == null) {
+      return LoginResponseEntity(
+          status: 'failed', message: 'Internal Server Error', data: null);
+    }
     final pivotEntity = PivotEntity(
         customer_id: response.data!.user!.customer!.pivot!.customerId!,
         id: response.data!.user!.customer!.pivot!.id!,

@@ -115,7 +115,7 @@ class _SmmAppsState extends State<SmmApps> with WidgetsBindingObserver {
           return ScreenUtilInit(
             minTextAdapt: true,
             splitScreenMode: true,
-            designSize: Size(375, 812),
+            designSize: const Size(375, 812),
             builder: (context, child) => MaterialApp.router(
               debugShowCheckedModeBanner: false,
               theme: ThemeData(

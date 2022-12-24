@@ -3,7 +3,10 @@ import 'package:smm_apps/feature/login/domain/entity/LoginResponseEntity.dart';
 import 'package:smm_apps/feature/login/domain/repository/login_repository.dart';
 
 abstract class LoginUseCase {
-  Future<LoginResponseEntity> login(String username, String password);
+  Future<LoginResponseEntity> login(
+    String username,
+    String password,
+  );
 }
 
 class LoginUseCaseImpl implements LoginUseCase {

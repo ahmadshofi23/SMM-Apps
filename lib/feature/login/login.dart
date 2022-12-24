@@ -1,7 +1,5 @@
-import 'package:dio/dio.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:shared_preferences/shared_preferences.dart';
 import 'package:smm_apps/core/utils/common.dart';
 import 'package:smm_apps/feature/forecast/data/repository_impl/forecast_repository_impl.dart';
 import 'package:smm_apps/feature/forecast/domain/repository/forecast_repository.dart';

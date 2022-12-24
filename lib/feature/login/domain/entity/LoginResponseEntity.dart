@@ -3,9 +3,9 @@
 import 'package:equatable/equatable.dart';
 
 class LoginResponseEntity extends Equatable {
-  final String status;
-  final String message;
-  final LoginDataEntity data;
+  final String? status;
+  final String? message;
+  final LoginDataEntity? data;
 
   const LoginResponseEntity(
       {required this.status, required this.message, required this.data});
@@ -119,7 +119,7 @@ class CustomerEntity extends Equatable {
       required this.pivotEntity});
 
   @override
-  List<Object?> get props => throw [
+  List<Object?> get props => [
         address,
         created_at,
         created_user,
@@ -147,5 +147,5 @@ class PivotEntity extends Equatable {
   });
 
   @override
-  List<Object?> get props => throw [id, user_id, customer_id];
+  List<Object?> get props => [id, user_id, customer_id];
 }

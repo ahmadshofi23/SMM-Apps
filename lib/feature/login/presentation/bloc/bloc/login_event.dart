@@ -7,11 +7,22 @@ abstract class LoginEvent extends Equatable {
   List<Object> get props => [];
 }
 
-class LoggedIn extends LoginEvent {
+class Loading extends LoginEvent {}
+
+class LoginFailed extends LoginEvent {
+  final String message;
+
+  LoginFailed({required this.message});
+
+  @override
+  List<Object> get props => [message];
+}
+
+class AuthLogin extends LoginEvent {
   final String username;
   final String password;
 
-  LoggedIn({
+  AuthLogin({
     required this.username,
     required this.password,
   });

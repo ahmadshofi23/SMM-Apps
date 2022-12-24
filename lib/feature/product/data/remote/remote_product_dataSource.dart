@@ -19,7 +19,7 @@ class RemoteProductDataSourceImpl extends RemoteProductDataSource {
     print('Masuk Remote Product');
     final Dio dio = new Dio();
     final response = await dio.get(
-        'https://forecast.sumantagroup.com/api/user/product-list',
+        'https://forecast.sumantagroup.com/api/user/product-list?page=$page',
         options: Options(
             headers: {HttpHeaders.authorizationHeader: 'Bearer $token'}));
 
