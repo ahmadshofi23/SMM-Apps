@@ -8,7 +8,7 @@ import 'package:smm_apps/feature/product/data/models/product_models.dart';
 abstract class RemoteProductDataSource {
   Future<ProductsModels> getAllProductResponse(int? page);
   Future<ProductsModels> searchProductResponse(String keywords);
-  Future<AddToChartModels> addProductToChart(int productId);
+  Future<AddToChartModels> addProductToChart(int productId, String qty);
 }
 
 class RemoteProductDataSourceImpl extends RemoteProductDataSource {
@@ -46,13 +46,14 @@ class RemoteProductDataSourceImpl extends RemoteProductDataSource {
   }
 
   @override
-  Future<AddToChartModels> addProductToChart(int productId) async {
+  Future<AddToChartModels> addProductToChart(int productId, String qty) async {
     final SharedPreferences saveToken = await SharedPreferences.getInstance();
     String token = saveToken.getString('token')!;
     print('Masuk Remote Add Prodcut');
+    print('Jumlah Data yang di kirim $qty');
     final Dio dio = Dio();
     final response = await dio.post('$baseUrl/add-product-to-cart',
-        data: {'product_inventory_id': productId},
+        data: {'product_inventory_id': productId, 'quantity': qty},
         options: Options(
             headers: {HttpHeaders.authorizationHeader: 'Bearer $token'}));
     print('Response Add Chart $response');

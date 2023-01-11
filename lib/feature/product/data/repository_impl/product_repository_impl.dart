@@ -158,8 +158,10 @@ class ProductRepositoryImpl implements ProductRepository {
   }
 
   @override
-  Future<AddToChartEntities> addProductToChart(int productId) async {
-    final response = await remoteProductDataSource.addProductToChart(productId);
+  Future<AddToChartEntities> addProductToChart(
+      int productId, String qty) async {
+    final response =
+        await remoteProductDataSource.addProductToChart(productId, qty);
     return AddToChartEntities(
       status: response.status,
       message: response.message,

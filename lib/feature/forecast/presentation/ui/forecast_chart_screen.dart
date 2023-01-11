@@ -54,11 +54,12 @@ class _ForecastChartScreenState extends State<ForecastChartScreen> {
         ),
         body: BlocBuilder<ForecastBloc, ForecastState>(
           builder: (context, state) {
-            if (state.isLoading!) {
-              return const Center(
-                child: CircularProgressIndicator(),
-              );
-            } else if (state.productCart!.isEmpty) {
+            // if (state.isLoading!) {
+            //   return const Center(
+            //     child: CircularProgressIndicator(),
+            //   );
+            // } else
+            if (state.productCart!.isEmpty) {
               return Container();
             } else {
               return SafeArea(

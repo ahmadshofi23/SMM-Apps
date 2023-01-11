@@ -30,8 +30,9 @@ class LoadMoreProduct extends ProductEvent {
 
 class AddToChart extends ProductEvent {
   final int productId;
+  final String qty;
 
-  const AddToChart({required this.productId});
+  const AddToChart({required this.productId, required this.qty});
   @override
-  List<Object?> get props => [productId];
+  List<Object?> get props => [productId, qty];
 }

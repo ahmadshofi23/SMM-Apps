@@ -26,7 +26,7 @@ class Data {
   int? id;
   int? productInventoryId;
   int? cartId;
-  int? forecastQty;
+  String? forecastQty;
   int? subtotal;
   String? createdAt;
   String? updatedAt;

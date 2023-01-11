@@ -50,11 +50,12 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       print('Length Product ${response.productsEntity?.length}');
     } else if (event is AddToChart) {
       yield state.copyWith(isLoading: true);
-      final response = await useCase.addProductToChart(event.productId);
+      final response =
+          await useCase.addProductToChart(event.productId, event.qty);
       yield state.copyWith(
         responseAddToChart: response,
       );
-      print('Response Add To Chart BLOC ${state.responseAddToChart!.status}');
+      print('Response Add To Chart BLOC ${state.responseAddToChart?.status}');
       yield state.copyWith(isLoading: false);
     }
   }

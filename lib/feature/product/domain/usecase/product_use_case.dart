@@ -9,7 +9,7 @@ abstract class ProductUseCase {
     int? pages,
   );
   Future<ProductsResponseEntity> searchProductResponse(String keywords);
-  Future<AddToChartEntities> addProductToChart(int productId);
+  Future<AddToChartEntities> addProductToChart(int productId, String qty);
 }
 
 class ProductUseCaseImpl implements ProductUseCase {
@@ -31,7 +31,7 @@ class ProductUseCaseImpl implements ProductUseCase {
   }
 
   @override
-  Future<AddToChartEntities> addProductToChart(int productId) {
-    return productRepository.addProductToChart(productId);
+  Future<AddToChartEntities> addProductToChart(int productId, String qty) {
+    return productRepository.addProductToChart(productId, qty);
   }
 }

@@ -6,5 +6,5 @@ abstract class ProductRepository {
   Future<List<Producttt>> getALlProduct();
   Future<ProductsResponseEntity> getALlProductResponse(int? pages);
   Future<ProductsResponseEntity> searchProductResponse(String keywords);
-  Future<AddToChartEntities> addProductToChart(int productId);
+  Future<AddToChartEntities> addProductToChart(int productId, String qty);
 }

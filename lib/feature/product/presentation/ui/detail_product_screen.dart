@@ -15,6 +15,8 @@ class DetailProductScreen extends StatefulWidget {
 }
 
 class _DetailProductScreenState extends State<DetailProductScreen> {
+  final TextEditingController _jmlhController = TextEditingController();
+
   late ProductBloc productBloc;
   @override
   void initState() {
@@ -42,135 +44,172 @@ class _DetailProductScreenState extends State<DetailProductScreen> {
             body: SafeArea(
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+                child: ListView(
                   children: [
-                    const SizedBox(height: 8),
-                    GestureDetector(
-                        onTap: () => Navigator.pop(context),
-                        child: const Icon(CupertinoIcons.arrow_left, size: 24)),
-                    const SizedBox(height: 16),
-                    Container(
-                      width: double.infinity,
-                      height: 229,
-                      decoration: BoxDecoration(
-                        color: AppColor().kFillCardColor,
-                        borderRadius: BorderRadius.circular(8),
-                      ),
-                      child: ClipRRect(
-                        borderRadius: BorderRadius.circular(8),
-                        child: Image.asset(
-                          'assets/images/picture1.jpeg',
-                          fit: BoxFit.fill,
-                        ),
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      args.name,
-                      style: TextStyle(
-                        fontSize: 18,
-                        color: AppColor().kBlackColor,
-                      ),
-                    ),
-                    const SizedBox(height: 16),
-                    Text(
-                      "Detail produk",
-                      style: TextStyle(
-                        fontWeight: FontWeight.bold,
-                        fontSize: 16,
-                        color: AppColor().kBlackColor,
-                      ),
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        Text(
-                          'Packing',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: AppColor().kFontColorPlaceHolder,
+                        const SizedBox(height: 8),
+                        GestureDetector(
+                            onTap: () => Navigator.pop(context),
+                            child: const Icon(CupertinoIcons.arrow_left,
+                                size: 24)),
+                        const SizedBox(height: 16),
+                        Container(
+                          width: double.infinity,
+                          height: 229,
+                          decoration: BoxDecoration(
+                            color: AppColor().kFillCardColor,
+                            borderRadius: BorderRadius.circular(8),
+                          ),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(8),
+                            child: Image.asset(
+                              'assets/images/picture1.jpeg',
+                              fit: BoxFit.fill,
+                            ),
                           ),
                         ),
-                        const SizedBox(width: 36),
+                        const SizedBox(height: 16),
                         Text(
-                          'Strip',
+                          args.name,
                           style: TextStyle(
+                            fontSize: 18,
+                            color: AppColor().kBlackColor,
+                          ),
+                        ),
+                        const SizedBox(height: 16),
+                        Text(
+                          "Detail produk",
+                          style: TextStyle(
+                            fontWeight: FontWeight.bold,
                             fontSize: 16,
                             color: AppColor().kBlackColor,
                           ),
                         ),
+                        const SizedBox(height: 8),
+                        Row(
+                          children: [
+                            Text(
+                              'Packing',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: AppColor().kFontColorPlaceHolder,
+                              ),
+                            ),
+                            const SizedBox(width: 36),
+                            Text(
+                              'Strip',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: AppColor().kBlackColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Row(
+                          children: [
+                            Text(
+                              'Satuan',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: AppColor().kFontColorPlaceHolder,
+                              ),
+                            ),
+                            const SizedBox(width: 40),
+                            Text(
+                              '100 qty per kit',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: AppColor().kBlackColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Row(
+                          children: [
+                            Text(
+                              'Batch',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: AppColor().kFontColorPlaceHolder,
+                              ),
+                            ),
+                            const SizedBox(width: 50),
+                            Text(
+                              'NUV792542',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: AppColor().kBlackColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 8),
+                        Row(
+                          children: [
+                            Text(
+                              'Exp date',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: AppColor().kFontColorPlaceHolder,
+                              ),
+                            ),
+                            const SizedBox(width: 28),
+                            Text(
+                              '11/02/2024',
+                              style: TextStyle(
+                                fontSize: 16,
+                                color: AppColor().kBlackColor,
+                              ),
+                            ),
+                          ],
+                        ),
+                        const SizedBox(height: 10),
+                        TextFormField(
+                          controller: _jmlhController,
+                          decoration: InputDecoration(
+                            hintText: 'Jumlah',
+                            hintStyle: TextStyle(
+                              fontSize: 16,
+                              color: AppColor().kFontColorPlaceHolder,
+                            ),
+                            border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide(
+                                color: AppColor().kFontColorPlaceHolder,
+                              ),
+                            ),
+                            focusedBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide(
+                                color: AppColor().kFontColorPlaceHolder,
+                              ),
+                            ),
+                            enabledBorder: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8),
+                              borderSide: BorderSide(
+                                color: AppColor().kFontColorPlaceHolder,
+                              ),
+                            ),
+                          ),
+                        ),
+                        const SizedBox(height: 40),
+                        DefaultButton(
+                          text: 'Tambah ke Cart',
+                          press: () async {
+                            print('ID PRODUCT ${args.id}');
+                            BlocProvider.of<ProductBloc>(context).add(
+                              AddToChart(
+                                  productId: args.id,
+                                  qty: _jmlhController.text),
+                            );
+                          },
+                        )
                       ],
                     ),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Text(
-                          'Satuan',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: AppColor().kFontColorPlaceHolder,
-                          ),
-                        ),
-                        const SizedBox(width: 40),
-                        Text(
-                          '100 qty per kit',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: AppColor().kBlackColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Text(
-                          'Batch',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: AppColor().kFontColorPlaceHolder,
-                          ),
-                        ),
-                        const SizedBox(width: 50),
-                        Text(
-                          'NUV792542',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: AppColor().kBlackColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const SizedBox(height: 8),
-                    Row(
-                      children: [
-                        Text(
-                          'Exp date',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: AppColor().kFontColorPlaceHolder,
-                          ),
-                        ),
-                        const SizedBox(width: 28),
-                        Text(
-                          '11/02/2024',
-                          style: TextStyle(
-                            fontSize: 16,
-                            color: AppColor().kBlackColor,
-                          ),
-                        ),
-                      ],
-                    ),
-                    const Spacer(),
-                    DefaultButton(
-                      text: 'Tambah ke Cart',
-                      press: () async {
-                        print('ID PRODUCT ${args.id}');
-                        BlocProvider.of<ProductBloc>(context)
-                            .add(AddToChart(productId: args.id));
-                      },
-                    )
                   ],
                 ),
               ),
