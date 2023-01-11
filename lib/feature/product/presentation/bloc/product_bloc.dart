@@ -3,6 +3,7 @@ import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:smm_apps/feature/product/domain/entity/product_entities.dart';
 import 'package:smm_apps/feature/product/domain/entity/product_respons_entity.dart';
+import 'package:smm_apps/feature/product/domain/entity/response_add_to_chart.dart';
 import 'package:smm_apps/feature/product/domain/usecase/product_use_case.dart';
 
 part 'product_event.dart';
@@ -47,6 +48,14 @@ class ProductBloc extends Bloc<ProductEvent, ProductState> {
       yield state.copyWith(isLoading: true);
       yield state.copyWith(listProductResponse: loadMore, isLoading: false);
       print('Length Product ${response.productsEntity?.length}');
+    } else if (event is AddToChart) {
+      yield state.copyWith(isLoading: true);
+      final response = await useCase.addProductToChart(event.productId);
+      yield state.copyWith(
+        responseAddToChart: response,
+      );
+      print('Response Add To Chart BLOC ${state.responseAddToChart!.status}');
+      yield state.copyWith(isLoading: false);
     }
   }
 }

@@ -3,6 +3,7 @@ import 'package:smm_apps/feature/product/data/dummy_data.dart';
 import 'package:smm_apps/feature/product/data/remote/remote_product_dataSource.dart';
 import 'package:smm_apps/feature/product/domain/entity/product_entities.dart';
 import 'package:smm_apps/feature/product/domain/entity/product_respons_entity.dart';
+import 'package:smm_apps/feature/product/domain/entity/response_add_to_chart.dart';
 import 'package:smm_apps/feature/product/domain/repository/product_repository.dart';
 
 class ProductRepositoryImpl implements ProductRepository {
@@ -154,5 +155,14 @@ class ProductRepositoryImpl implements ProductRepository {
           showPaging: response.showPaging,
           productsEntity: []);
     }
+  }
+
+  @override
+  Future<AddToChartEntities> addProductToChart(int productId) async {
+    final response = await remoteProductDataSource.addProductToChart(productId);
+    return AddToChartEntities(
+      status: response.status,
+      message: response.message,
+    );
   }
 }

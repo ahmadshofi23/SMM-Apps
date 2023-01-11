@@ -1,4 +1,4 @@
-package com.example.smm_apps
+package com.smm.forecast
 
 import io.flutter.embedding.android.FlutterActivity
 

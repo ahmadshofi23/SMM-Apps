@@ -1,5 +1,5 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.example.smm_apps">
+    package="com.smm.forecast">
    <application
         android:label="smm_apps"
         android:name="${applicationName}"

@@ -1,0 +1,39 @@
+{
+  "project_info": {
+    "project_number": "628029364331",
+    "project_id": "forecast-smm",
+    "storage_bucket": "forecast-smm.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:628029364331:android:affaca9d3806e50e22392e",
+        "android_client_info": {
+          "package_name": "com.smm.forecast"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "628029364331-4ass336ijorr3l1ls1ovjs4b9rsehic9.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCZ0sRDLUnpUAUZtYAI9kvax2F8Wb_p3Cc"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "628029364331-4ass336ijorr3l1ls1ovjs4b9rsehic9.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

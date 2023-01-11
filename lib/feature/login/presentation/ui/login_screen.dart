@@ -1,3 +1,5 @@
+import 'package:firebase_core/firebase_core.dart';
+import 'package:firebase_messaging/firebase_messaging.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,6 +19,14 @@ class LoginScreen extends StatefulWidget {
 }
 
 class _LoginScreenState extends State<LoginScreen> {
+  void getTokenFirebase() async {
+    await Firebase.initializeApp();
+    FirebaseMessaging messaging = FirebaseMessaging.instance;
+    messaging.getToken().then((value) {
+      print('Token Firebase $value');
+    });
+  }
+
   final _namedRoutes = Modular.get<NameRoutes>();
   bool _obscureText = true;
   TextEditingController username = TextEditingController();
@@ -38,6 +48,8 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   void initState() {
     super.initState();
+
+    getTokenFirebase();
   }
 
   bool isValidate() {

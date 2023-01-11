@@ -31,7 +31,7 @@ class ForeCastModule extends Module {
             create: (context) => ForecastBloc(
               useCase: Modular.get<ForecastUseCase>(),
             ),
-            child: const DetailProductScreen(),
+            child: DetailProductScreen(),
           ),
         ),
         ChildRoute(

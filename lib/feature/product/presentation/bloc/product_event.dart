@@ -27,3 +27,11 @@ class LoadMoreProduct extends ProductEvent {
   @override
   List<Object?> get props => [page];
 }
+
+class AddToChart extends ProductEvent {
+  final int productId;
+
+  const AddToChart({required this.productId});
+  @override
+  List<Object?> get props => [productId];
+}
